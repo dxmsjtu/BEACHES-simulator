@@ -10,9 +10,9 @@ end
 par.scenario = 'mmMAGIC_UMi_LOS'; % 'BERLIN_UMa_NLOS', 'Freespace', 'mmMAGIC_UMi_LOS', 'mmMAGIC_UMi_NLOS'
 par.fc = 60e9; % carrier frequency [Hz]
 par.BW = 40e6; % par.BW [Hz]
-par.N = 128; % number of carriers
-%par.B = 128; % number of BS antennas
-%par.U = 8; % number of single-antenna UEs % number of user equipments
+par.N = 128;   % number of carriers
+%par.B = 128;  % number of BS antennas
+%par.U = 8;    % number of single-antenna UEs % number of user equipments
 
 i_snapshot = 1; % used for frequency response: freq_response = c.fr(bandwidth,subcarriers,i_snapshot)
 
@@ -20,20 +20,17 @@ i_snapshot = 1; % used for frequency response: freq_response = c.fr(bandwidth,su
 s = qd_simulation_parameters;                           
 s.show_progress_bars = false;                               
 s.center_frequency = par.fc;                           
-s.sample_density = 2.5; % 2.5 samples per half-wavelength
+s.sample_density = 2.5;        % 2.5 samples per half-wavelength
 s.use_absolute_delays = false; % Include delay of the LOS path
-s.use_spherical_waves = true; % Use spherical waves instead of plane waves?
+s.use_spherical_waves = true;  % Use spherical waves instead of plane waves?
 
 lambda = s.wavelength;
-
 %% Setup channel layout 
-
 % Create new QuaDRiGa layout
 l = qd_layout(s);    
 if(show)
 disp('generating positions');
 end
-
 % Define UE layout
 l.no_rx = par.U;                                           
 %%%% ???
