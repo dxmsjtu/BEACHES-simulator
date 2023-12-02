@@ -23,7 +23,7 @@ while (~done)
     
     for i = 1:N_Files
         filename = filesInDir(i).name;
-        if ~isempty(strfind(filename, '_sub'))
+                                    if ~isempty(strfind(filename, '_sub'))
             header = regexprep(filename,'_sub\w*.mat','');
             done = false;
             break;
